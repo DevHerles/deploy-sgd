@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  payara:
+    image: 10.4.0.12/pcm/sgd-payara:3.0
+    ports:
+      - "4849:4848"
+      - "444:443"
+    volumes:
+      - ./autostart.sh:/mnt/autostart.sh
+    restart: always
+    stdin_open: true
+    tty: true
+    command: "/mnt/autostart.sh"
+    depends_on:
+      - postgres
+    hostname: payara
+  postgres:
+    image: 10.4.0.12/pcm/sgd-postgres:1.0
+    ports:
+      - "5433:5432"
+    volumes:
+      - /opt/data:/var/lib/postgresql/data
+    restart: always
+    stdin_open: true
+    tty: true
+    command: postgres -c listen_addresses='*'
+    hostname: postgres
+volumes:
+  postgres_data:
+ 

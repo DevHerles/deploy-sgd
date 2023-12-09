@@ -1,0 +1,22 @@
+# Ignore system and temporary files
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore Docker-specific files
+.dockerignore
+.docker/
+
+# Ignore build artifacts
+*.tar
+*.gz
+*.zip
+*.sql
+
+# Ignore local development files
+.env
+.env.local
+.env.*.local
+docker-compose.override.yml
+
